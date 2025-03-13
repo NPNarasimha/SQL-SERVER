@@ -16,4 +16,6 @@ select * from Student order by Marks OFFSET 1 Row Fetch next 2 rows only;
 --Using SQL Server SELECT TOP with a constant value
 select top 3 * from student 
 --Using SELECT TOP to return a percentage of rows
-select top 20 percent * from student;
+select top 50 percent * from student;--total 6 record 40 means 2.5 but it rounds the number and get 3 and return 3 records.
+--Using SELECT TOP WITH TIES to include rows that match values in the last row
+select top 2 with Ties * from student order by Std_Branch;--order by is mandatory in with ties in SELECT TOP;
