@@ -407,3 +407,32 @@ select * from grades;
 exec  UpdateStudentGrade 1,102,78;
 --after
 select * from grades;
+
+
+------------------------------------Task------------
+select * from Employe;
+alter Proc Edit_Details
+@id int
+as
+Begin
+begin try
+		if not exists(select 1 from Employe where Emp_ID=@id)
+		begin
+		insert into employe(Emp_id,Emp_Name,Emp_Age,Emp_Salary)values(@id,'NP Krishna',89,8923000);
+		print'insert Emplyee data'
+		end
+		else
+		begin
+		update employe set Emp_age=60, Emp_Salary=900000 where Emp_ID=@id;
+		print'Udate is successfull';
+		end
+end try
+begin catch 
+SELECT
+            ERROR_MESSAGE()
+end catch
+end
+exec Edit_Details 2;
+exec Edit_Details 10;
+exec Edit_Details 11;
+ select * from Employe;     
